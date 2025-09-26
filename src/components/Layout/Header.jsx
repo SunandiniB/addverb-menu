@@ -1,167 +1,215 @@
-import React, { useState } from 'react'
-import { motion, AnimatePresence } from 'framer-motion'
+import React, { useState } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
+import {
+  Home,
+  Settings,
+  Package,
+  Bot,
+  Phone,
+  X,
+  Zap,
+  Globe,
+  ChevronRight
+} from 'lucide-react';
 
-const Header = () => {
-  const [isMenuOpen, setIsMenuOpen] = useState(false)
-  const [activeMenu, setActiveMenu] = useState(null)
+const MobileMenu = ({ isOpen, onClose }) => {
+  const [activeIndex, setActiveIndex] = useState(-1);
 
-  // Clean menu data structure
-  const menuData = [
-    {
-      title: "Industry",
-      items: ["Automotive and Tyre", "Consumer Goods", "Grocery", "Solar and Battery", 
-              "Chemicals and Petrochemicals", "E-Commerce", "Pharmaceuticals", 
-              "Third Party Logistics", "Cold Storage", "Fashion", "Semiconductors"]
+  const menuItems = [
+    { 
+      name: 'HOME', 
+      icon: Home, 
+      href: '/',
+      description: 'System Dashboard',
+      color: '#00ffff'
     },
-    {
-      title: "Solutions", 
-      items: ["Functionality", "Products", "Mobile Robots", "Sorting Robots", 
-              "ASRS", "Picking Systems", "Software"]
+    { 
+      name: 'SERVICES', 
+      icon: Settings, 
+      href: '/service',
+      description: 'Core Functions',
+      color: '#ff00ff'
     },
-    {
-      title: "Service",
-      items: ["24/7 Support", "Maintenance", "Consulting", "Installation"]
+    { 
+      name: 'SOLUTIONS', 
+      icon: Zap, 
+      href: '/solutions',
+      description: 'Tech Solutions',
+      color: '#00ff80'
     },
-    {
-      title: "News Room",
-      items: ["Case Studies", "Blogs", "Whitepapers", "Events", "News", "Podcasts", "Sustainability"]
-    }
-  ]
+    { 
+      name: 'PRODUCTS', 
+      icon: Package, 
+      href: '/products',
+      description: 'Hardware Catalog',
+      color: '#ff8000'
+    },
+    { 
+      name: 'ABOUT', 
+      icon: Bot, 
+      href: '/company/about',
+      description: 'System Info',
+      color: '#80ff00'
+    },
+    { 
+      name: 'CONTACT', 
+      icon: Phone, 
+      href: '/contact',
+      description: 'Communication',
+      color: '#ffff00'
+    },
+  ];
 
-  const bottomMenuItems = ["Podcasts", "Enquire", "Blog", "Support"]
+  const handleItemClick = (href) => {
+    window.location.href = href;
+    onClose();
+  };
 
   return (
-    <>
-      {/* Header */}
-      <header className="fixed top-0 left-0 right-0 z-50 bg-black border-b border-red-600">
-        <div className="container mx-auto px-4 py-4">
-          <div className="flex items-center justify-between">
-            {/* Logo */}
-            <div className="flex items-center space-x-3">
-              <div className="w-10 h-10 bg-red-600 rounded-full flex items-center justify-center">
-                <span className="text-white font-bold text-lg">A</span>
-              </div>
-              <div>
-                <h1 className="text-xl font-bold text-white">ADDVERB</h1>
-                <p className="text-xs text-gray-400">Robotics</p>
-              </div>
-            </div>
-            
-            {/* Hamburger Button */}
-            <button 
-              onClick={() => setIsMenuOpen(true)}
-              className="p-3 bg-red-600 rounded-lg hover:bg-red-700 transition-colors"
-            >
-              <div className="w-6 h-6 flex flex-col justify-between">
-                <span className="w-full h-0.5 bg-white"></span>
-                <span className="w-full h-0.5 bg-white"></span>
-                <span className="w-full h-0.5 bg-white"></span>
-              </div>
-            </button>
-          </div>
-        </div>
-      </header>
+    <AnimatePresence>
+      {isOpen && (
+        <>
+          {/* Overlay */}
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="fixed inset-0 bg-black/80 backdrop-blur-sm z-40"
+            onClick={onClose}
+          />
 
-      {/* Mobile Menu Overlay */}
-      <AnimatePresence>
-        {isMenuOpen && (
-          <>
-            {/* Backdrop */}
+          {/* Menu Panel */}
+          <motion.div
+            initial={{ x: '-100%' }}
+            animate={{ x: '0%' }}
+            exit={{ x: '-100%' }}
+            transition={{
+              type: 'spring',
+              stiffness: 400,
+              damping: 40
+            }}
+            className="fixed left-0 top-0 h-full w-80 bg-black/95 backdrop-blur-lg border-r border-cyan-400/30 z-50 overflow-hidden"
+          >
+            {/* Header */}
             <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-              onClick={() => {
-                setIsMenuOpen(false)
-                setActiveMenu(null)
-              }}
-              className="fixed inset-0 bg-black bg-opacity-50 z-50"
-            />
-            
-            {/* Menu Panel */}
-            <motion.div
-              initial={{ x: '100%' }}
-              animate={{ x: 0 }}
-              exit={{ x: '100%' }}
-              transition={{ type: 'spring', damping: 30, stiffness: 300 }}
-              className="fixed top-0 right-0 h-full w-80 bg-white z-50 shadow-2xl"
+              initial={{ y: -50, opacity: 0 }}
+              animate={{ y: 0, opacity: 1 }}
+              transition={{ delay: 0.2 }}
+              className="flex items-center justify-between p-6 border-b border-cyan-400/30"
             >
-              {/* Menu Header */}
-              <div className="bg-red-600 text-white p-6">
-                <div className="flex justify-between items-center mb-4">
-                  <h2 className="text-xl font-bold">Menu</h2>
-                  <button 
-                    onClick={() => {
-                      setIsMenuOpen(false)
-                      setActiveMenu(null)
-                    }}
-                    className="p-2 hover:bg-red-700 rounded-lg transition-colors"
-                  >
-                    <span className="text-lg">×</span>
-                  </button>
+              <div className="flex items-center space-x-3">
+                <motion.div
+                  animate={{ rotate: 360 }}
+                  transition={{ duration: 8, repeat: Infinity, ease: 'linear' }}
+                  className="w-8 h-8 border-2 border-cyan-400 rounded-full flex items-center justify-center"
+                >
+                  <Bot className="w-4 h-4 text-cyan-400" />
+                </motion.div>
+                <div>
+                  <h2 className="text-lg font-bold font-mono text-white tracking-wider">ADDVERB</h2>
+                  <p className="text-xs text-cyan-400 font-mono">NAVIGATION SYSTEM</p>
                 </div>
-                <p className="text-red-100 text-sm">ADDVERB Technologies</p>
               </div>
               
-              {/* Menu Items */}
-              <div className="p-4 space-y-2 h-[calc(100vh-200px)] overflow-y-auto">
-                {menuData.map((section, index) => (
-                  <div key={index} className="border-b border-gray-200 pb-2">
-                    <button
-                      onClick={() => setActiveMenu(activeMenu === index ? null : index)}
-                      className="w-full text-left p-3 flex justify-between items-center hover:bg-gray-100 rounded-lg transition-colors"
-                    >
-                      <span className="font-semibold text-gray-800">{section.title}</span>
-                      <motion.span
-                        animate={{ rotate: activeMenu === index ? 180 : 0 }}
-                        className="text-gray-500"
-                      >
-                        ▼
-                      </motion.span>
-                    </button>
-                    
-                    <AnimatePresence>
-                      {activeMenu === index && (
-                        <motion.div
-                          initial={{ height: 0, opacity: 0 }}
-                          animate={{ height: 'auto', opacity: 1 }}
-                          exit={{ height: 0, opacity: 0 }}
-                          className="ml-4 mt-2 space-y-1"
-                        >
-                          {section.items.map((item, itemIndex) => (
-                            <button
-                              key={itemIndex}
-                              className="w-full text-left p-2 text-sm text-gray-600 hover:bg-red-50 hover:text-red-600 rounded-lg transition-colors"
-                            >
-                              {item}
-                            </button>
-                          ))}
-                        </motion.div>
-                      )}
-                    </AnimatePresence>
-                  </div>
-                ))}
-              </div>
-
-              {/* Bottom Menu */}
-              <div className="absolute bottom-0 left-0 right-0 bg-gray-50 border-t border-gray-200 p-4">
-                <div className="grid grid-cols-2 gap-2">
-                  {bottomMenuItems.map((item, index) => (
-                    <button
-                      key={index}
-                      className="p-2 text-xs text-gray-600 hover:bg-red-600 hover:text-white rounded transition-colors text-center"
-                    >
-                      {item}
-                    </button>
-                  ))}
-                </div>
-              </div>
+              <motion.button
+                whileHover={{ scale: 1.1, rotate: 90 }}
+                whileTap={{ scale: 0.9 }}
+                onClick={onClose}
+                className="p-2 text-white border border-cyan-400/50 rounded-lg bg-black/60"
+              >
+                <X className="w-5 h-5" />
+              </motion.button>
             </motion.div>
-          </>
-        )}
-      </AnimatePresence>
-    </>
-  )
-}
 
-export default Header
+            {/* Menu Items */}
+            <nav className="flex-1 py-6">
+              {menuItems.map((item, index) => {
+                const Icon = item.icon;
+                const isActive = activeIndex === index;
+                
+                return (
+                  <motion.div
+                    key={item.name}
+                    initial={{ x: -50, opacity: 0 }}
+                    animate={{ x: 0, opacity: 1 }}
+                    transition={{ delay: index * 0.1, duration: 0.5 }}
+                    className="relative"
+                  >
+                    <motion.button
+                      onClick={() => handleItemClick(item.href)}
+                      onMouseEnter={() => setActiveIndex(index)}
+                      onMouseLeave={() => setActiveIndex(-1)}
+                      className="w-full flex items-center justify-between p-4 mx-4 my-1 rounded-lg font-mono font-semibold transition-all duration-300 group"
+                      style={{
+                        background: isActive ? `${item.color}15` : 'transparent',
+                        borderLeft: isActive ? `3px solid ${item.color}` : '3px solid transparent',
+                      }}
+                      whileHover={{ x: 10 }}
+                      whileTap={{ scale: 0.98 }}
+                    >
+                      <div className="flex items-center space-x-4">
+                        <motion.div
+                          animate={isActive ? { rotate: 360, scale: 1.1 } : { rotate: 0, scale: 1 }}
+                          transition={{ duration: 0.5 }}
+                          className="p-2 rounded-lg"
+                          style={{
+                            background: `${item.color}20`,
+                            boxShadow: isActive ? `0 0 15px ${item.color}40` : 'none',
+                          }}
+                        >
+                          <Icon 
+                            className="w-5 h-5" 
+                            style={{ color: isActive ? item.color : '#ffffff' }}
+                          />
+                        </motion.div>
+                        
+                        <div className="text-left">
+                          <div 
+                            className="text-sm font-bold tracking-wider"
+                            style={{ color: isActive ? item.color : '#ffffff' }}
+                          >
+                            {item.name}
+                          </div>
+                          <div className="text-xs text-gray-400 font-normal">
+                            {item.description}
+                          </div>
+                        </div>
+                      </div>
+                      
+                      <ChevronRight 
+                        className="w-4 h-4" 
+                        style={{ color: isActive ? item.color : '#666666' }}
+                      />
+                    </motion.button>
+                  </motion.div>
+                );
+              })}
+            </nav>
+
+            {/* Footer */}
+            <motion.div
+              initial={{ opacity: 0, y: 50 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.6 }}
+              className="border-t border-cyan-400/30 p-6"
+            >
+              <div className="text-center text-xs font-mono text-gray-400 mb-3">
+                ADDVERB TECHNOLOGIES
+              </div>
+              
+              <motion.div
+                animate={{ opacity: [0.5, 1, 0.5] }}
+                transition={{ duration: 2, repeat: Infinity }}
+                className="text-center text-xs font-mono text-cyan-400"
+              >
+                v2.0.25 | BUILD 2024.12
+              </motion.div>
+            </motion.div>
+          </motion.div>
+        </>
+      )}
+    </AnimatePresence>
+  );
+};
+
+export default MobileMenu;

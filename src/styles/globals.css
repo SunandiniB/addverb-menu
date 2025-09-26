@@ -1,0 +1,180 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap');
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --robot-red: #dc2626;
+  --robot-dark: #0a0a0a;
+  --robot-metal: #404040;
+  --robot-steel: #737373;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Roboto', sans-serif;
+  background: var(--robot-dark);
+  color: white;
+  overflow-x: hidden;
+}
+
+/* Robotic background pattern */
+.robot-bg {
+  background: 
+    radial-gradient(circle at 25% 25%, #1a1a1a 0%, transparent 50%),
+    radial-gradient(circle at 75% 75%, #262626 0%, transparent 50%);
+  background-color: #0a0a0a;
+}
+
+/* Steel texture effect */
+.steel-texture {
+  background-image: 
+    linear-gradient(45deg, #404040 25%, transparent 25%),
+    linear-gradient(-45deg, #404040 25%, transparent 25%),
+    linear-gradient(45deg, transparent 75%, #404040 75%),
+    linear-gradient(-45deg, transparent 75%, #404040 75%);
+  background-size: 4px 4px;
+  background-position: 0 0, 0 2px, 2px -2px, -2px 0px;
+}
+
+/* Animated circuit pattern */
+.circuit-pattern {
+  background-image: 
+    linear-gradient(90deg, transparent 79px, #dc2626 79px, #dc2626 81px, transparent 81px),
+    linear-gradient(#1a1a1a 1px, transparent 1px);
+  background-size: 100% 20px, 100% 20px;
+  animation: circuit-move 20s linear infinite;
+}
+
+@keyframes circuit-move {
+  0% { background-position: 0 0, 0 0; }
+  100% { background-position: 0 1000px, 0 1000px; }
+}
+
+/* Mechanical button press effect */
+.mechanical-press {
+  transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.mechanical-press:active {
+  transform: translateY(2px) scale(0.98);
+}
+
+/* Glitch text effect */
+.glitch-text {
+  position: relative;
+  display: inline-block;
+}
+
+.glitch-text::before,
+.glitch-text::after {
+  content: attr(data-text);
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+
+.glitch-text::before {
+  left: 2px;
+  text-shadow: -1px 0 red;
+  animation: glitch-1 0.5s infinite linear alternate-reverse;
+}
+
+.glitch-text::after {
+  left: -2px;
+  text-shadow: 1px 0 blue;
+  animation: glitch-2 0.5s infinite linear alternate-reverse;
+}
+
+@keyframes glitch-1 {
+  0% { clip-path: inset(20% 0 30% 0); }
+  100% { clip-path: inset(50% 0 10% 0); }
+}
+
+@keyframes glitch-2 {
+  0% { clip-path: inset(30% 0 20% 0); }
+  100% { clip-path: inset(40% 0 30% 0); }
+}
+
+/* Glitch text effect */
+.glitch-text {
+  position: relative;
+  display: inline-block;
+}
+
+.glitch-text::before,
+.glitch-text::after {
+  content: attr(data-text);
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0.8;
+}
+
+.glitch-text::before {
+  left: 2px;
+  text-shadow: -1px 0 red;
+  clip-path: inset(20% 0 30% 0);
+  animation: glitch-1 2s infinite linear alternate-reverse;
+}
+
+.glitch-text::after {
+  left: -2px;
+  text-shadow: 1px 0 blue;
+  clip-path: inset(50% 0 10% 0);
+  animation: glitch-2 3s infinite linear alternate-reverse;
+}
+
+@keyframes glitch-1 {
+  0% { clip-path: inset(20% 0 30% 0); }
+  100% { clip-path: inset(50% 0 10% 0); }
+}
+
+@keyframes glitch-2 {
+  0% { clip-path: inset(30% 0 20% 0); }
+  100% { clip-path: inset(40% 0 30% 0); }
+}
+
+/* Mechanical press effect */
+.mechanical-press {
+  transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.mechanical-press:active {
+  transform: translateY(2px) scale(0.98);
+}
+
+/* Steel texture effect */
+.steel-texture {
+  background-image: 
+    linear-gradient(45deg, #333 25%, transparent 25%),
+    linear-gradient(-45deg, #333 25%, transparent 25%),
+    linear-gradient(45deg, transparent 75%, #333 75%),
+    linear-gradient(-45deg, transparent 75%, #333 75%);
+  background-size: 4px 4px;
+  background-position: 0 0, 0 2px, 2px -2px, -2px 0px;
+}
+
+/* Circuit pattern background */
+.circuit-pattern {
+  background-image: 
+    linear-gradient(90deg, transparent 79px, #dc2626 79px, #dc2626 81px, transparent 81px),
+    linear-gradient(#1a1a1a 1px, transparent 1px);
+  background-size: 100% 20px, 100% 20px;
+  animation: circuit-move 20s linear infinite;
+}
+
+@keyframes circuit-move {
+  0% { background-position: 0 0, 0 0; }
+  100% { background-position: 0 1000px, 0 1000px; }
+}

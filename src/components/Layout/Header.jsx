@@ -1,222 +1,3 @@
-// // import React, { useState, useEffect } from 'react';
-// // import { motion } from 'framer-motion';
-// // import { Menu, Bot, Settings, Globe, Zap, Factory, Building } from 'lucide-react';
-
-// // const Header = ({ onMenuClick }) => {
-// //   const [isScrolled, setIsScrolled] = useState(false);
-// //   const [activeItem, setActiveItem] = useState('');
-
-// //   useEffect(() => {
-// //     const handleScroll = () => {
-// //       setIsScrolled(window.scrollY > 50);
-// //     };
-
-// //     window.addEventListener('scroll', handleScroll);
-// //     return () => window.removeEventListener('scroll', handleScroll);
-// //   }, []);
-
-// //   const navItems = [
-// //     { name: 'Industry', href: '/industry', icon: Factory },
-// //     { name: 'Solutions', href: '/solutions', icon: Zap },
-// //     { name: 'Service', href: '/service', icon: Settings },
-// //     { name: 'News Room', href: '/newsroom', icon: Globe },
-// //     { name: 'Company', href: '/company', icon: Building },
-// //   ];
-
-// //   return (
-// //     <motion.header
-// //       initial={{ y: -100 }}
-// //       animate={{ y: 0 }}
-// //       transition={{ duration: 0.8, type: 'spring' }}
-// //       className={`fixed top-0 left-0 w-full z-50 transition-all duration-500 ${
-// //         isScrolled 
-// //           ? 'bg-black/90 backdrop-blur-lg border-b border-cyan-400/30' 
-// //           : 'bg-black/60 backdrop-blur-md'
-// //       }`}
-// //     >
-// //       {/* Top Support Bar */}
-// //       <motion.div
-// //         initial={{ opacity: 0 }}
-// //         animate={{ opacity: 1 }}
-// //         transition={{ delay: 0.5 }}
-// //         className="hidden md:block bg-gray-100 text-gray-600 text-xs py-1 px-6 text-center font-mono"
-// //       >
-// //         GLOBAL ROBOTICS COMPANY | 24/7 AFTER SALES SUPPORT
-// //       </motion.div>
-
-// //       {/* Animated top border */}
-// //       <motion.div
-// //         className="absolute bottom-0 left-0 h-0.5 bg-gradient-to-r from-cyan-400 via-purple-500 to-pink-500"
-// //         animate={{
-// //           width: ['0%', '100%', '0%'],
-// //         }}
-// //         transition={{
-// //           duration: 4,
-// //           repeat: Infinity,
-// //           ease: 'easeInOut',
-// //         }}
-// //       />
-
-// //       <div className="flex justify-between items-center px-6 py-4">
-// //         {/* Logo */}
-// //         <motion.div 
-// //           className="relative group"
-// //           whileHover={{ scale: 1.05 }}
-// //         >
-// //           <motion.div
-// //             className="flex items-center space-x-2"
-// //           >
-// //             <motion.div
-// //               animate={{ rotate: 360 }}
-// //               transition={{ duration: 8, repeat: Infinity, ease: 'linear' }}
-// //               className="w-8 h-8 border-2 border-cyan-400 rounded-full flex items-center justify-center"
-// //             >
-// //               <Bot className="w-4 h-4 text-cyan-400" />
-// //             </motion.div>
-// //             <motion.span
-// //               className="text-3xl font-bold text-red-500 font-sans tracking-tight"
-// //               style={{
-// //                 textShadow: '0 0 20px rgba(239, 68, 68, 0.5)',
-// //               }}
-// //               animate={{
-// //                 textShadow: [
-// //                   '0 0 20px rgba(239, 68, 68, 0.5)',
-// //                   '0 0 30px rgba(239, 68, 68, 0.8)',
-// //                   '0 0 20px rgba(239, 68, 68, 0.5)',
-// //                 ],
-// //               }}
-// //               transition={{
-// //                 duration: 2,
-// //                 repeat: Infinity,
-// //                 ease: 'easeInOut',
-// //               }}
-// //             >
-// //               ADDVERB
-// //             </motion.span>
-// //           </motion.div>
-          
-// //           {/* Hover effect */}
-// //           <motion.div
-// //             className="absolute -inset-2 border border-cyan-400/50 rounded-lg opacity-0 group-hover:opacity-100"
-// //             initial={{ scale: 0.8 }}
-// //             whileHover={{ scale: 1 }}
-// //             transition={{ duration: 0.2 }}
-// //           />
-// //         </motion.div>
-
-// //         {/* Desktop Navigation */}
-// //         <nav className="hidden md:flex items-center space-x-8">
-// //           {navItems.map((item, index) => {
-// //             const Icon = item.icon;
-            
-// //             return (
-// //               <motion.div
-// //                 key={item.name}
-// //                 initial={{ opacity: 0, y: -20 }}
-// //                 animate={{ opacity: 1, y: 0 }}
-// //                 transition={{ delay: index * 0.1, duration: 0.5 }}
-// //                 className="relative"
-// //               >
-// //                 <a
-// //                   href={item.href}
-// //                   className="relative group flex items-center space-x-2 px-4 py-2 rounded-lg font-mono font-semibold tracking-wide transition-all duration-300 text-white hover:text-cyan-400"
-// //                   onMouseEnter={() => setActiveItem(item.name)}
-// //                   onMouseLeave={() => setActiveItem('')}
-// //                 >
-// //                   <motion.div
-// //                     animate={activeItem === item.name ? { rotate: 360 } : { rotate: 0 }}
-// //                     transition={{ duration: 0.5 }}
-// //                   >
-// //                     <Icon className="w-4 h-4" />
-// //                   </motion.div>
-// //                   <span className="text-sm">{item.name}</span>
-                  
-// //                   {/* Animated underline */}
-// //                   <motion.div
-// //                     className="absolute -bottom-1 left-0 h-0.5 bg-gradient-to-r from-cyan-400 to-purple-500"
-// //                     initial={{ width: 0 }}
-// //                     animate={{ 
-// //                       width: activeItem === item.name ? '100%' : '0%'
-// //                     }}
-// //                     transition={{ duration: 0.3 }}
-// //                   />
-                  
-// //                   {/* Glow effect */}
-// //                   <motion.div
-// //                     className="absolute inset-0 rounded-lg bg-cyan-400/20 opacity-0 group-hover:opacity-100"
-// //                     transition={{ duration: 0.3 }}
-// //                   />
-// //                 </a>
-// //               </motion.div>
-// //             );
-// //           })}
-          
-// //           {/* Contact CTA */}
-// //           <motion.button
-// //             whileHover={{ scale: 1.05 }}
-// //             whileTap={{ scale: 0.95 }}
-// //             className="relative px-6 py-2 font-mono font-bold text-white rounded-lg overflow-hidden border-2 border-red-500 hover:bg-red-500 transition-all duration-300"
-// //             style={{
-// //               boxShadow: '0 0 20px rgba(239, 68, 68, 0.3)',
-// //             }}
-// //           >
-// //             <span className="relative z-10">CONTACT</span>
-// //           </motion.button>
-// //         </nav>
-
-// //         {/* Mobile Menu Button */}
-// //         <motion.button
-// //           whileHover={{ scale: 1.1 }}
-// //           whileTap={{ scale: 0.9 }}
-// //           className="md:hidden relative p-2 text-white border border-cyan-400/50 rounded-lg bg-black/60 backdrop-blur-sm"
-// //           onClick={onMenuClick}
-// //         >
-// //           <motion.div
-// //             animate={{ rotate: 0 }}
-// //             whileHover={{ rotate: 180 }}
-// //             transition={{ duration: 0.3 }}
-// //           >
-// //             <Menu className="w-6 h-6" />
-// //           </motion.div>
-          
-// //           {/* Button glow effect */}
-// //           <motion.div
-// //             className="absolute inset-0 border border-cyan-400/50 rounded-lg"
-// //             animate={{
-// //               boxShadow: [
-// //                 '0 0 5px rgba(0,255,255,0.3)',
-// //                 '0 0 15px rgba(0,255,255,0.6)',
-// //                 '0 0 5px rgba(0,255,255,0.3)',
-// //               ],
-// //             }}
-// //             transition={{
-// //               duration: 2,
-// //               repeat: Infinity,
-// //               ease: 'easeInOut',
-// //             }}
-// //           />
-// //         </motion.button>
-// //       </div>
-
-// //       {/* System Status Indicator */}
-// //       <motion.div
-// //         initial={{ opacity: 0 }}
-// //         animate={{ opacity: 1 }}
-// //         transition={{ delay: 1 }}
-// //         className="absolute top-full left-6 mt-2 text-xs font-mono text-cyan-400 bg-black/80 px-3 py-1 rounded border border-cyan-400/30 hidden md:block"
-// //       >
-// //         <motion.span
-// //           animate={{ opacity: [0.5, 1, 0.5] }}
-// //           transition={{ duration: 1.5, repeat: Infinity }}
-// //         >
-// //           ● SYSTEM ONLINE
-// //         </motion.span>
-// //       </motion.div>
-// //     </motion.header>
-// //   );
-// // };
-
-// // export default Header;
 // import React, { useState, useEffect } from 'react';
 // import { motion, AnimatePresence } from 'framer-motion';
 // import { Menu, Bot, Settings, Globe, Zap, Factory, Building, ChevronDown, Search, Phone } from 'lucide-react';
@@ -225,13 +6,19 @@
 //   const [isScrolled, setIsScrolled] = useState(false);
 //   const [activeDropdown, setActiveDropdown] = useState(null);
 //   const [hoverTimeout, setHoverTimeout] = useState(null);
+//   const [mounted, setMounted] = useState(false);
 
 //   useEffect(() => {
+//     setMounted(true);
 //     const handleScroll = () => {
-//       setIsScrolled(window.scrollY > 50);
+//       const scrollPosition = window.scrollY;
+//       setIsScrolled(scrollPosition > 50);
 //     };
 
 //     window.addEventListener('scroll', handleScroll);
+//     // Initial check
+//     handleScroll();
+    
 //     return () => window.removeEventListener('scroll', handleScroll);
 //   }, []);
 
@@ -377,47 +164,54 @@
 
 //     return (
 //       <motion.div
-//         initial={{ opacity: 0, y: -10 }}
-//         animate={{ opacity: 1, y: 0 }}
-//         exit={{ opacity: 0, y: -10 }}
-//         transition={{ duration: 0.2 }}
-//         className="absolute top-full left-0 mt-2 w-80 bg-black/95 backdrop-blur-lg border border-cyan-400/30 rounded-xl p-6 shadow-2xl"
+//         initial={{ opacity: 0, y: -10, scale: 0.95 }}
+//         animate={{ opacity: 1, y: 0, scale: 1 }}
+//         exit={{ opacity: 0, y: -10, scale: 0.95 }}
+//         transition={{ duration: 0.2, ease: "easeOut" }}
+//         className="absolute top-full left-0 mt-2 w-80 bg-slate-800/95 backdrop-blur-lg border-2 border-cyan-400/30 rounded-xl p-6 shadow-2xl z-50"
 //         onMouseEnter={() => handleMouseEnter(item.name)}
 //         onMouseLeave={handleMouseLeave}
+//         style={{ boxShadow: '0 0 30px rgba(0, 255, 255, 0.3)' }}
 //       >
+//         {/* Cyberpunk corners */}
+//         <div className="absolute top-2 left-2 w-4 h-4 border-t-2 border-l-2 border-cyan-400" />
+//         <div className="absolute top-2 right-2 w-4 h-4 border-t-2 border-r-2 border-cyan-400" />
+//         <div className="absolute bottom-2 left-2 w-4 h-4 border-b-2 border-l-2 border-cyan-400" />
+//         <div className="absolute bottom-2 right-2 w-4 h-4 border-b-2 border-r-2 border-cyan-400" />
+
 //         <div className="space-y-3">
 //           {item.dropdown.map((subItem, index) => (
 //             <div key={index}>
 //               <a
 //                 href={subItem.href}
-//                 className="flex items-center justify-between p-3 rounded-lg text-white hover:bg-white/10 transition-colors group"
+//                 className="flex items-center justify-between p-3 rounded-lg text-white hover:bg-cyan-400/20 transition-all group font-mono border border-transparent hover:border-cyan-400/30"
 //               >
-//                 <span className="font-medium">{subItem.name}</span>
+//                 <span className="font-medium group-hover:text-cyan-400 transition-colors">{subItem.name}</span>
 //                 {subItem.children && (
-//                   <ChevronDown className="w-4 h-4 text-gray-400 group-hover:text-cyan-400" />
+//                   <ChevronDown className="w-4 h-4 text-gray-400 group-hover:text-cyan-400 transform group-hover:rotate-180 transition-transform" />
 //                 )}
 //               </a>
               
 //               {/* Third level dropdown for complex items */}
 //               {subItem.children && (
-//                 <div className="ml-4 mt-2 space-y-2">
+//                 <div className="ml-4 mt-2 space-y-2 border-l-2 border-cyan-400/30 pl-4">
 //                   {subItem.children.map((childItem, childIndex) => (
 //                     <div key={childIndex}>
 //                       <a
 //                         href={childItem.href || '#'}
-//                         className="block p-2 text-gray-300 hover:text-cyan-400 transition-colors text-sm"
+//                         className="block p-2 text-gray-300 hover:text-cyan-400 transition-colors text-sm font-mono rounded hover:bg-cyan-400/10"
 //                       >
 //                         {childItem.name}
 //                       </a>
 //                       {childItem.children && (
-//                         <div className="ml-4 mt-1 space-y-1">
+//                         <div className="ml-4 mt-1 space-y-1 border-l border-gray-600 pl-3">
 //                           {childItem.children.map((grandChild, grandIndex) => (
 //                             <a
 //                               key={grandIndex}
 //                               href={grandChild.href}
-//                               className="block p-1 text-gray-400 hover:text-cyan-300 transition-colors text-xs"
+//                               className="block p-1 text-gray-400 hover:text-cyan-300 transition-colors text-xs font-mono rounded hover:bg-cyan-400/10"
 //                             >
-//                               {grandChild.name}
+//                               &gt; {grandChild.name}
 //                             </a>
 //                           ))}
 //                         </div>
@@ -433,20 +227,24 @@
 //     );
 //   };
 
+//   if (!mounted) {
+//     return null; // Prevent hydration mismatch
+//   }
+
 //   return (
 //     <>
 //       {/* Top Support Bar */}
 //       <motion.div
 //         initial={{ opacity: 0, y: -20 }}
 //         animate={{ opacity: 1, y: 0 }}
-//         className="hidden md:block bg-gray-100 text-gray-600 text-xs py-2 px-6 text-center font-mono border-b"
+//         className="hidden md:block bg-slate-800/90 text-cyan-400 text-xs py-2 px-6 text-center font-mono border-b border-cyan-400/20 backdrop-blur-sm"
 //       >
 //         <div className="flex justify-between items-center max-w-7xl mx-auto">
-//           <span>GLOBAL ROBOTICS COMPANY | 24/7 AFTER SALES SUPPORT</span>
+//           <span>&gt; GLOBAL_ROBOTICS_COMPANY | 24/7_AFTER_SALES_SUPPORT</span>
 //           <div className="flex items-center space-x-4">
-//             <span>🇬🇧 EN</span>
-//             <a href="/contact" className="text-red-500 hover:text-red-600 font-semibold">
-//               Contact Us
+//             <span className="text-white">🌐 EN</span>
+//             <a href="/contact" className="text-red-400 hover:text-red-300 font-semibold transition-colors">
+//               CONTACT_US.exe
 //             </a>
 //           </div>
 //         </div>
@@ -456,35 +254,57 @@
 //       <motion.header
 //         initial={{ y: -100 }}
 //         animate={{ y: 0 }}
-//         transition={{ duration: 0.8, type: 'spring' }}
-//         className={`sticky top-0 w-full z-50 transition-all duration-500 ${
+//         transition={{ duration: 0.8, type: 'spring', stiffness: 100 }}
+//         className={`sticky top-0 w-full z-50 transition-all duration-500 ease-in-out ${
 //           isScrolled 
-//             ? 'bg-white/95 backdrop-blur-lg shadow-lg border-b' 
-//             : 'bg-white/90 backdrop-blur-sm'
+//             ? 'bg-slate-900/95 backdrop-blur-xl shadow-2xl border-b-2 border-cyan-400/30' 
+//             : 'bg-slate-800/70 backdrop-blur-sm border-b border-cyan-400/10'
 //         }`}
+//         style={{
+//           boxShadow: isScrolled ? '0 0 30px rgba(0, 255, 255, 0.2)' : 'none'
+//         }}
 //       >
-//         <div className="flex justify-between items-center px-6 py-4 max-w-7xl mx-auto">
+//         <div className="flex justify-between items-center px-4 sm:px-6 py-3 sm:py-4 max-w-7xl mx-auto">
 //           {/* Logo */}
 //           <motion.div 
 //             className="relative group"
 //             whileHover={{ scale: 1.05 }}
+//             transition={{ type: "spring", stiffness: 400 }}
 //           >
 //             <a href="/" className="flex items-center space-x-3">
 //               <motion.div
 //                 animate={{ rotate: 360 }}
 //                 transition={{ duration: 8, repeat: Infinity, ease: 'linear' }}
-//                 className="w-8 h-8 border-2 border-cyan-400 rounded-full flex items-center justify-center bg-gradient-to-r from-cyan-400 to-blue-600"
+//                 className="w-8 h-8 border-2 border-cyan-400 rounded-full flex items-center justify-center relative overflow-hidden"
+//                 style={{
+//                   background: 'linear-gradient(135deg, #00ffff, #0080ff)',
+//                   boxShadow: '0 0 15px rgba(0, 255, 255, 0.5)'
+//                 }}
 //               >
-//                 <Bot className="w-4 h-4 text-white" />
+//                 <Bot className="w-4 h-4 text-white relative z-10" />
+                
+//                 {/* Pulsing effect */}
+//                 <motion.div
+//                   className="absolute inset-0 rounded-full bg-cyan-400"
+//                   animate={{
+//                     scale: [1, 1.3, 1],
+//                     opacity: [0, 0.3, 0],
+//                   }}
+//                   transition={{
+//                     duration: 2,
+//                     repeat: Infinity,
+//                     ease: "easeInOut"
+//                   }}
+//                 />
 //               </motion.div>
-//               <span className="text-3xl font-bold text-red-500 tracking-tight">
+//               <span className="text-2xl sm:text-3xl font-bold text-red-400 tracking-tight font-mono">
 //                 ADDVERB
 //               </span>
 //             </a>
 //           </motion.div>
 
 //           {/* Desktop Navigation */}
-//           <nav className="hidden md:flex items-center space-x-1">
+//           <nav className="hidden lg:flex items-center space-x-1">
 //             {navigationItems.map((item, index) => {
 //               const Icon = item.icon;
 //               const hasDropdown = item.dropdown && item.dropdown.length > 0;
@@ -496,24 +316,44 @@
 //                   onMouseEnter={() => hasDropdown && handleMouseEnter(item.name)}
 //                   onMouseLeave={handleMouseLeave}
 //                 >
-//                   <a
+//                   <motion.a
 //                     href={item.href}
-//                     className={`flex items-center space-x-2 px-4 py-2 rounded-lg transition-all duration-300 group ${
+//                     className={`flex items-center space-x-2 px-4 py-2 rounded-lg transition-all duration-300 group font-mono relative overflow-hidden ${
 //                       activeDropdown === item.name 
-//                         ? 'bg-gray-100 text-red-500' 
-//                         : 'text-gray-700 hover:bg-gray-50 hover:text-red-500'
+//                         ? 'bg-slate-700/50 text-cyan-400' 
+//                         : 'text-gray-300 hover:bg-slate-700/30 hover:text-cyan-400'
 //                     }`}
+//                     whileHover={{ scale: 1.05 }}
+//                     style={{
+//                       boxShadow: activeDropdown === item.name ? `0 0 15px ${item.color}30` : 'none'
+//                     }}
 //                   >
-//                     <Icon className="w-4 h-4" />
-//                     <span className="font-medium">{item.name}</span>
-//                     {hasDropdown && (
-//                       <ChevronDown 
-//                         className={`w-4 h-4 transition-transform duration-200 ${
-//                           activeDropdown === item.name ? 'rotate-180' : ''
-//                         }`} 
+//                     {/* Background glow effect */}
+//                     {activeDropdown === item.name && (
+//                       <motion.div
+//                         className="absolute inset-0 rounded-lg"
+//                         style={{ background: `${item.color}10` }}
+//                         initial={{ opacity: 0 }}
+//                         animate={{ opacity: 1 }}
+//                         transition={{ duration: 0.3 }}
 //                       />
 //                     )}
-//                   </a>
+                    
+//                     <Icon className="w-4 h-4 relative z-10" />
+//                     <span className="font-medium relative z-10">{item.name}</span>
+//                     {hasDropdown && (
+//                       <motion.div
+//                         animate={{ 
+//                           rotate: activeDropdown === item.name ? 180 : 0,
+//                           scale: activeDropdown === item.name ? 1.1 : 1
+//                         }}
+//                         transition={{ duration: 0.2 }}
+//                         className="relative z-10"
+//                       >
+//                         <ChevronDown className="w-4 h-4" />
+//                       </motion.div>
+//                     )}
+//                   </motion.a>
 
 //                   {/* Dropdown Menu */}
 //                   <AnimatePresence>
@@ -527,7 +367,7 @@
 //             <motion.button
 //               whileHover={{ scale: 1.1 }}
 //               whileTap={{ scale: 0.9 }}
-//               className="p-2 text-gray-700 hover:text-red-500 transition-colors"
+//               className="p-2 text-gray-300 hover:text-cyan-400 transition-colors rounded-lg hover:bg-slate-700/30"
 //             >
 //               <Search className="w-5 h-5" />
 //             </motion.button>
@@ -535,12 +375,23 @@
 //             {/* Contact Button */}
 //             <motion.a
 //               href="/contact"
-//               whileHover={{ scale: 1.05 }}
+//               whileHover={{ scale: 1.05, y: -2 }}
 //               whileTap={{ scale: 0.95 }}
-//               className="ml-4 px-6 py-2 bg-red-500 hover:bg-red-600 text-white rounded-lg font-semibold transition-colors border-2 border-red-500 hover:border-red-600"
+//               className="ml-4 px-6 py-2 bg-red-500 hover:bg-red-600 text-white rounded-lg font-semibold font-mono transition-all border-2 border-red-500 hover:border-red-600 relative overflow-hidden group"
+//               style={{ boxShadow: '0 0 20px rgba(239, 68, 68, 0.3)' }}
 //             >
-//               <Phone className="inline w-4 h-4 mr-2" />
-//               CONTACT
+//               {/* Button glow effect */}
+//               <motion.div
+//                 className="absolute inset-0 bg-red-400"
+//                 initial={{ x: '-100%' }}
+//                 whileHover={{ x: '100%' }}
+//                 transition={{ duration: 0.6 }}
+//                 style={{ opacity: 0.2 }}
+//               />
+//               <span className="relative z-10 flex items-center">
+//                 <Phone className="inline w-4 h-4 mr-2" />
+//                 CONTACT.exe
+//               </span>
 //             </motion.a>
 //           </nav>
 
@@ -548,30 +399,19 @@
 //           <motion.button
 //             whileHover={{ scale: 1.1 }}
 //             whileTap={{ scale: 0.9 }}
-//             className="md:hidden relative p-2 text-gray-700 border border-gray-300 rounded-lg hover:bg-gray-50"
+//             className="lg:hidden relative p-3 text-gray-300 border-2 border-cyan-400/50 rounded-lg hover:bg-slate-700/50 bg-slate-800/60 backdrop-blur-sm transition-all"
 //             onClick={onMenuClick}
+//             style={{ boxShadow: '0 0 15px rgba(0,255,255,0.2)' }}
 //           >
 //             <Menu className="w-6 h-6" />
+            
+//             {/* Corner decorations */}
+//             <div className="absolute top-1 left-1 w-2 h-2 border-t border-l border-cyan-400" />
+//             <div className="absolute top-1 right-1 w-2 h-2 border-t border-r border-cyan-400" />
+//             <div className="absolute bottom-1 left-1 w-2 h-2 border-b border-l border-cyan-400" />
+//             <div className="absolute bottom-1 right-1 w-2 h-2 border-b border-r border-cyan-400" />
 //           </motion.button>
 //         </div>
-
-//         {/* Mobile Search Bar (when needed) */}
-//         <motion.div
-//           className="md:hidden border-t bg-white/95 backdrop-blur-lg"
-//           initial={{ height: 0 }}
-//           animate={{ height: 'auto' }}
-//         >
-//           <div className="px-6 py-3">
-//             <div className="relative">
-//               <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-gray-400" />
-//               <input
-//                 type="text"
-//                 placeholder="Search products, solutions..."
-//                 className="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:border-red-500"
-//               />
-//             </div>
-//           </div>
-//         </motion.div>
 //       </motion.header>
 //     </>
 //   );
@@ -587,13 +427,19 @@ const Header = ({ onMenuClick }) => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [activeDropdown, setActiveDropdown] = useState(null);
   const [hoverTimeout, setHoverTimeout] = useState(null);
+  const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
+    setMounted(true);
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 50);
+      const scrollPosition = window.scrollY;
+      setIsScrolled(scrollPosition > 50);
     };
 
     window.addEventListener('scroll', handleScroll);
+    // Initial check
+    handleScroll();
+    
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
@@ -739,47 +585,57 @@ const Header = ({ onMenuClick }) => {
 
     return (
       <motion.div
-        initial={{ opacity: 0, y: -10 }}
-        animate={{ opacity: 1, y: 0 }}
-        exit={{ opacity: 0, y: -10 }}
-        transition={{ duration: 0.2 }}
-        className="absolute top-full left-0 mt-2 w-80 bg-slate-800/95 backdrop-blur-lg border border-cyan-400/30 rounded-xl p-6 shadow-2xl z-50"
+        initial={{ opacity: 0, y: -10, scale: 0.95 }}
+        animate={{ opacity: 1, y: 0, scale: 1 }}
+        exit={{ opacity: 0, y: -10, scale: 0.95 }}
+        transition={{ duration: 0.2, ease: "easeOut" }}
+        className="absolute top-full left-0 mt-2 w-72 sm:w-80 bg-slate-800/95 backdrop-blur-lg border-2 border-cyan-400/30 rounded-xl p-4 sm:p-6 shadow-2xl z-50 max-h-96 overflow-y-auto"
         onMouseEnter={() => handleMouseEnter(item.name)}
         onMouseLeave={handleMouseLeave}
+        style={{ 
+          boxShadow: '0 0 30px rgba(0, 255, 255, 0.3)',
+          scrollbarWidth: 'thin'
+        }}
       >
-        <div className="space-y-3">
+        {/* Cyberpunk corners */}
+        <div className="absolute top-2 left-2 w-3 h-3 border-t-2 border-l-2 border-cyan-400" />
+        <div className="absolute top-2 right-2 w-3 h-3 border-t-2 border-r-2 border-cyan-400" />
+        <div className="absolute bottom-2 left-2 w-3 h-3 border-b-2 border-l-2 border-cyan-400" />
+        <div className="absolute bottom-2 right-2 w-3 h-3 border-b-2 border-r-2 border-cyan-400" />
+
+        <div className="space-y-2">
           {item.dropdown.map((subItem, index) => (
             <div key={index}>
               <a
                 href={subItem.href}
-                className="flex items-center justify-between p-3 rounded-lg text-white hover:bg-cyan-400/20 transition-colors group font-mono"
+                className="flex items-center justify-between p-2 sm:p-3 rounded-lg text-white hover:bg-cyan-400/20 transition-all group font-mono border border-transparent hover:border-cyan-400/30 text-sm"
               >
-                <span className="font-medium">{subItem.name}</span>
+                <span className="font-medium group-hover:text-cyan-400 transition-colors">{subItem.name}</span>
                 {subItem.children && (
-                  <ChevronDown className="w-4 h-4 text-gray-400 group-hover:text-cyan-400" />
+                  <ChevronDown className="w-3 h-3 text-gray-400 group-hover:text-cyan-400 transform group-hover:rotate-180 transition-transform" />
                 )}
               </a>
               
               {/* Third level dropdown for complex items */}
               {subItem.children && (
-                <div className="ml-4 mt-2 space-y-2">
+                <div className="ml-3 mt-1 space-y-1 border-l border-cyan-400/30 pl-3">
                   {subItem.children.map((childItem, childIndex) => (
                     <div key={childIndex}>
                       <a
                         href={childItem.href || '#'}
-                        className="block p-2 text-gray-300 hover:text-cyan-400 transition-colors text-sm font-mono"
+                        className="block p-2 text-gray-300 hover:text-cyan-400 transition-colors text-xs font-mono rounded hover:bg-cyan-400/10"
                       >
                         {childItem.name}
                       </a>
                       {childItem.children && (
-                        <div className="ml-4 mt-1 space-y-1">
+                        <div className="ml-3 mt-1 space-y-1 border-l border-gray-600/50 pl-2">
                           {childItem.children.map((grandChild, grandIndex) => (
                             <a
                               key={grandIndex}
                               href={grandChild.href}
-                              className="block p-1 text-gray-400 hover:text-cyan-300 transition-colors text-xs font-mono"
+                              className="block p-1 text-gray-400 hover:text-cyan-300 transition-colors text-xs font-mono rounded hover:bg-cyan-400/10"
                             >
-                              {grandChild.name}
+                              &gt; {grandChild.name}
                             </a>
                           ))}
                         </div>
@@ -795,20 +651,24 @@ const Header = ({ onMenuClick }) => {
     );
   };
 
+  if (!mounted) {
+    return null; // Prevent hydration mismatch
+  }
+
   return (
     <>
       {/* Top Support Bar */}
       <motion.div
         initial={{ opacity: 0, y: -20 }}
         animate={{ opacity: 1, y: 0 }}
-        className="hidden md:block bg-slate-800 text-cyan-400 text-xs py-2 px-6 text-center font-mono border-b border-cyan-400/20"
+        className="hidden md:block bg-slate-800/90 text-cyan-400 text-xs py-2 px-4 sm:px-6 text-center font-mono border-b border-cyan-400/20 backdrop-blur-sm"
       >
         <div className="flex justify-between items-center max-w-7xl mx-auto">
-          <span>&gt; GLOBAL_ROBOTICS_COMPANY | 24/7_AFTER_SALES_SUPPORT</span>
+          <span>&gt; GLOBAL ROBOTICS COMPANY | 24/7 AFTER SALES SUPPORT</span>
           <div className="flex items-center space-x-4">
-            <span>🌐 EN</span>
-            <a href="/contact" className="text-red-400 hover:text-red-300 font-semibold">
-              CONTACT_US.exe
+            <span className="text-white">🌐 EN</span>
+            <a href="/contact" className="text-red-400 hover:text-red-300 font-semibold transition-colors">
+             
             </a>
           </div>
         </div>
@@ -818,35 +678,57 @@ const Header = ({ onMenuClick }) => {
       <motion.header
         initial={{ y: -100 }}
         animate={{ y: 0 }}
-        transition={{ duration: 0.8, type: 'spring' }}
-        className={`sticky top-0 w-full z-50 transition-all duration-500 ${
+        transition={{ duration: 0.8, type: 'spring', stiffness: 100 }}
+        className={`sticky top-0 w-full z-50 transition-all duration-500 ease-in-out ${
           isScrolled 
-            ? 'bg-slate-900/95 backdrop-blur-lg shadow-lg border-b border-cyan-400/20' 
-            : 'bg-slate-800/90 backdrop-blur-sm'
+            ? 'bg-slate-900/95 backdrop-blur-xl shadow-2xl border-b-2 border-cyan-400/30' 
+            : 'bg-slate-800/70 backdrop-blur-sm border-b border-cyan-400/10'
         }`}
+        style={{
+          boxShadow: isScrolled ? '0 0 30px rgba(0, 255, 255, 0.2)' : 'none'
+        }}
       >
-        <div className="flex justify-between items-center px-6 py-4 max-w-7xl mx-auto">
+        <div className="flex justify-between items-center px-4 sm:px-6 py-3 sm:py-4 max-w-7xl mx-auto">
           {/* Logo */}
           <motion.div 
             className="relative group"
             whileHover={{ scale: 1.05 }}
+            transition={{ type: "spring", stiffness: 400 }}
           >
-            <a href="/" className="flex items-center space-x-3">
+            <a href="/" className="flex items-center space-x-2 sm:space-x-3">
               <motion.div
                 animate={{ rotate: 360 }}
                 transition={{ duration: 8, repeat: Infinity, ease: 'linear' }}
-                className="w-8 h-8 border-2 border-cyan-400 rounded-full flex items-center justify-center bg-gradient-to-r from-cyan-400 to-blue-600"
+                className="w-7 h-7 sm:w-8 sm:h-8 border-2 border-cyan-400 rounded-full flex items-center justify-center relative overflow-hidden"
+                style={{
+                  background: 'linear-gradient(135deg, #00ffff, #0080ff)',
+                  boxShadow: '0 0 15px rgba(0, 255, 255, 0.5)'
+                }}
               >
-                <Bot className="w-4 h-4 text-white" />
+                <Bot className="w-3 h-3 sm:w-4 sm:h-4 text-white relative z-10" />
+                
+                {/* Pulsing effect */}
+                <motion.div
+                  className="absolute inset-0 rounded-full bg-cyan-400"
+                  animate={{
+                    scale: [1, 1.3, 1],
+                    opacity: [0, 0.3, 0],
+                  }}
+                  transition={{
+                    duration: 2,
+                    repeat: Infinity,
+                    ease: "easeInOut"
+                  }}
+                />
               </motion.div>
-              <span className="text-3xl font-bold text-red-400 tracking-tight font-mono">
+              <span className="text-xl sm:text-2xl lg:text-3xl font-bold text-red-400 tracking-tight font-mono">
                 ADDVERB
               </span>
             </a>
           </motion.div>
 
           {/* Desktop Navigation */}
-          <nav className="hidden md:flex items-center space-x-1">
+          <nav className="hidden lg:flex items-center space-x-1">
             {navigationItems.map((item, index) => {
               const Icon = item.icon;
               const hasDropdown = item.dropdown && item.dropdown.length > 0;
@@ -858,24 +740,44 @@ const Header = ({ onMenuClick }) => {
                   onMouseEnter={() => hasDropdown && handleMouseEnter(item.name)}
                   onMouseLeave={handleMouseLeave}
                 >
-                  <a
+                  <motion.a
                     href={item.href}
-                    className={`flex items-center space-x-2 px-4 py-2 rounded-lg transition-all duration-300 group font-mono ${
+                    className={`flex items-center space-x-2 px-3 sm:px-4 py-2 rounded-lg transition-all duration-300 group font-mono relative overflow-hidden ${
                       activeDropdown === item.name 
-                        ? 'bg-slate-700/50 text-cyan-400 shadow-[0_0_15px_rgba(0,255,255,0.3)]' 
+                        ? 'bg-slate-700/50 text-cyan-400' 
                         : 'text-gray-300 hover:bg-slate-700/30 hover:text-cyan-400'
                     }`}
+                    whileHover={{ scale: 1.05 }}
+                    style={{
+                      boxShadow: activeDropdown === item.name ? `0 0 15px ${item.color}30` : 'none'
+                    }}
                   >
-                    <Icon className="w-4 h-4" />
-                    <span className="font-medium">{item.name}</span>
-                    {hasDropdown && (
-                      <ChevronDown 
-                        className={`w-4 h-4 transition-transform duration-200 ${
-                          activeDropdown === item.name ? 'rotate-180' : ''
-                        }`} 
+                    {/* Background glow effect */}
+                    {activeDropdown === item.name && (
+                      <motion.div
+                        className="absolute inset-0 rounded-lg"
+                        style={{ background: `${item.color}10` }}
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        transition={{ duration: 0.3 }}
                       />
                     )}
-                  </a>
+                    
+                    <Icon className="w-4 h-4 relative z-10" />
+                    <span className="font-medium relative z-10 text-sm">{item.name}</span>
+                    {hasDropdown && (
+                      <motion.div
+                        animate={{ 
+                          rotate: activeDropdown === item.name ? 180 : 0,
+                          scale: activeDropdown === item.name ? 1.1 : 1
+                        }}
+                        transition={{ duration: 0.2 }}
+                        className="relative z-10"
+                      >
+                        <ChevronDown className="w-4 h-4" />
+                      </motion.div>
+                    )}
+                  </motion.a>
 
                   {/* Dropdown Menu */}
                   <AnimatePresence>
@@ -889,21 +791,31 @@ const Header = ({ onMenuClick }) => {
             <motion.button
               whileHover={{ scale: 1.1 }}
               whileTap={{ scale: 0.9 }}
-              className="p-2 text-gray-300 hover:text-cyan-400 transition-colors"
+              className="p-2 text-gray-300 hover:text-cyan-400 transition-colors rounded-lg hover:bg-slate-700/30"
             >
               <Search className="w-5 h-5" />
             </motion.button>
 
-            {/* Contact Button */}
+            {/* Contact Button - Only show on desktop */}
             <motion.a
               href="/contact"
-              whileHover={{ scale: 1.05 }}
+              whileHover={{ scale: 1.05, y: -2 }}
               whileTap={{ scale: 0.95 }}
-              className="ml-4 px-6 py-2 bg-red-500 hover:bg-red-600 text-white rounded-lg font-semibold font-mono transition-colors border-2 border-red-500 hover:border-red-600"
+              className="ml-4 px-4 sm:px-6 py-2 bg-red-500 hover:bg-red-600 text-white rounded-lg font-semibold font-mono transition-all border-2 border-red-500 hover:border-red-600 relative overflow-hidden group text-sm"
               style={{ boxShadow: '0 0 20px rgba(239, 68, 68, 0.3)' }}
             >
-              <Phone className="inline w-4 h-4 mr-2" />
-              CONTACT.exe
+              {/* Button glow effect */}
+              <motion.div
+                className="absolute inset-0 bg-red-400"
+                initial={{ x: '-100%' }}
+                whileHover={{ x: '100%' }}
+                transition={{ duration: 0.6 }}
+                style={{ opacity: 0.2 }}
+              />
+              <span className="relative z-10 flex items-center">
+                <Phone className="inline w-4 h-4 mr-2" />
+                CONTACT
+              </span>
             </motion.a>
           </nav>
 
@@ -911,31 +823,19 @@ const Header = ({ onMenuClick }) => {
           <motion.button
             whileHover={{ scale: 1.1 }}
             whileTap={{ scale: 0.9 }}
-            className="md:hidden relative p-2 text-gray-300 border border-cyan-400/50 rounded-lg hover:bg-slate-700/50 bg-slate-800/60 backdrop-blur-sm"
+            className="lg:hidden relative p-2 sm:p-3 text-gray-300 border-2 border-cyan-400/50 rounded-lg hover:bg-slate-700/50 bg-slate-800/60 backdrop-blur-sm transition-all"
             onClick={onMenuClick}
             style={{ boxShadow: '0 0 15px rgba(0,255,255,0.2)' }}
           >
-            <Menu className="w-6 h-6" />
+            <Menu className="w-5 h-5 sm:w-6 sm:h-6" />
+            
+            {/* Corner decorations */}
+            <div className="absolute top-1 left-1 w-1.5 h-1.5 border-t border-l border-cyan-400" />
+            <div className="absolute top-1 right-1 w-1.5 h-1.5 border-t border-r border-cyan-400" />
+            <div className="absolute bottom-1 left-1 w-1.5 h-1.5 border-b border-l border-cyan-400" />
+            <div className="absolute bottom-1 right-1 w-1.5 h-1.5 border-b border-r border-cyan-400" />
           </motion.button>
         </div>
-
-        {/* Mobile Search Bar (when needed) */}
-        <motion.div
-          className="md:hidden border-t bg-slate-800/95 backdrop-blur-lg border-cyan-400/20"
-          initial={{ height: 0 }}
-          animate={{ height: 'auto' }}
-        >
-          <div className="px-6 py-3">
-            <div className="relative">
-              <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-cyan-400" />
-              <input
-                type="text"
-                placeholder="&gt; Search_products_solutions..."
-                className="w-full pl-10 pr-4 py-2 bg-slate-700/50 border border-cyan-400/50 rounded-lg text-white font-mono focus:outline-none focus:border-cyan-400 focus:shadow-[0_0_15px_rgba(0,255,255,0.3)]"
-              />
-            </div>
-          </div>
-        </motion.div>
       </motion.header>
     </>
   );

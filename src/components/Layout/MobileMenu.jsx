@@ -1,34 +1,25 @@
 // import React, { useState } from 'react';
 // import { motion, AnimatePresence } from 'framer-motion';
 // import {
-//   Home,
-//   Settings,
-//   Package,
-//   Bot,
-//   Phone,
 //   X,
-//   Zap,
-//   Globe,
 //   ChevronRight,
-//   ChevronDown,
 //   Search,
 //   Factory,
-//   Truck,
-//   Cpu,
-//   BookOpen,
-//   Users,
+//   Zap,
+//   Settings,
+//   Globe,
 //   Building,
-//   Mic,
-//   FileText,
-//   MessageSquare,
-//   HelpCircle
+//   Activity,
+//   ExternalLink,
+//   Eye,
+//   Bot
 // } from 'lucide-react';
 
 // const MobileMenu = ({ isOpen, onClose }) => {
 //   const [expandedItems, setExpandedItems] = useState({});
 //   const [searchTerm, setSearchTerm] = useState('');
 
-//   // Complete menu structure based on your images and App.jsx routes
+//   // Complete menu structure
 //   const menuStructure = [
 //     {
 //       name: 'Industry',
@@ -144,8 +135,8 @@
 //       color: '#8000ff',
 //       path: '/company',
 //       children: [
-//         { name: 'Careers', path: '/company/careers' },
 //         { name: 'About Us', path: '/company/aboutus' },
+//         { name: 'Careers', path: '/company/careers' },
 //         { name: 'Partners', path: '/company/partners' },
 //       ]
 //     }
@@ -153,10 +144,10 @@
 
 //   // Bottom navigation items
 //   const bottomNavItems = [
-//     { name: 'Podcasts', icon: Mic, path: '/podcasts' },
-//     { name: 'Enquire', icon: MessageSquare, path: '/enquire' },
-//     { name: 'Blog', icon: FileText, path: '/blog' },
-//     { name: 'Support', icon: HelpCircle, path: '/support' },
+//     { name: 'Podcasts', icon: Activity, path: '/podcasts', color: '#00ffff' },
+//     { name: 'Enquire', icon: ExternalLink, path: '/enquire', color: '#ff00ff' },
+//     { name: 'Blog', icon: Eye, path: '/blog', color: '#00ff80' },
+//     { name: 'Support', icon: Settings, path: '/support', color: '#ff8000' },
 //   ];
 
 //   const toggleExpanded = (itemPath) => {
@@ -182,81 +173,118 @@
 //     const hasChildren = item.children && item.children.length > 0;
     
 //     return (
-//       <div key={itemKey} className="relative">
+//       <motion.div
+//         key={itemKey}
+//         className="relative"
+//         initial={{ opacity: 0, x: -20 }}
+//         animate={{ opacity: 1, x: 0 }}
+//         transition={{ delay: depth * 0.1 }}
+//       >
 //         <motion.button
 //           onClick={() => handleItemClick(item)}
-//           className={`w-full flex items-center justify-between p-3 mx-2 my-1 rounded-lg font-mono font-semibold transition-all duration-300 group text-left ${
+//           className={`w-full flex items-center justify-between p-4 mx-2 my-1 rounded-xl font-mono font-semibold transition-all duration-300 group text-left relative overflow-hidden ${
 //             depth === 0 ? 'text-sm' : depth === 1 ? 'text-xs ml-4' : 'text-xs ml-8'
 //           }`}
 //           style={{
 //             background: isExpanded && depth === 0 ? `${item.color}15` : 'transparent',
 //             borderLeft: isExpanded && depth === 0 ? `3px solid ${item.color}` : 
-//                        depth > 0 ? '2px solid #333' : '3px solid transparent',
+//                        depth > 0 ? '2px solid #475569' : '3px solid transparent',
 //             paddingLeft: depth > 0 ? `${12 + (depth * 8)}px` : '12px'
 //           }}
-//           whileHover={{ x: depth === 0 ? 5 : 2 }}
+//           whileHover={{ x: depth === 0 ? 8 : 4, scale: 1.02 }}
 //           whileTap={{ scale: 0.98 }}
 //         >
-//           <div className="flex items-center space-x-3">
+//           {/* Glow effect on hover */}
+//           {depth === 0 && (
+//             <motion.div
+//               className="absolute inset-0 rounded-xl opacity-0 group-hover:opacity-100"
+//               style={{
+//                 background: `radial-gradient(circle at center, ${item.color}20, transparent 70%)`,
+//                 boxShadow: `0 0 20px ${item.color}30`
+//               }}
+//               transition={{ duration: 0.3 }}
+//             />
+//           )}
+
+//           <div className="flex items-center space-x-4 relative z-10">
 //             {depth === 0 && item.icon && (
 //               <motion.div
 //                 animate={isExpanded ? { rotate: 180, scale: 1.1 } : { rotate: 0, scale: 1 }}
-//                 transition={{ duration: 0.3 }}
-//                 className="p-2 rounded-lg"
+//                 transition={{ duration: 0.3, type: "spring" }}
+//                 className="p-3 rounded-xl border-2 relative overflow-hidden"
 //                 style={{
 //                   background: `${item.color}20`,
-//                   boxShadow: isExpanded ? `0 0 15px ${item.color}40` : 'none',
+//                   borderColor: `${item.color}50`,
+//                   boxShadow: isExpanded ? `0 0 20px ${item.color}40` : 'none',
 //                 }}
 //               >
 //                 <item.icon 
-//                   className="w-4 h-4" 
-//                   style={{ color: isExpanded ? item.color : '#ffffff' }}
+//                   className="w-5 h-5" 
+//                   style={{ color: isExpanded ? item.color : '#e2e8f0' }}
+//                 />
+                
+//                 {/* Rotating ring */}
+//                 <motion.div
+//                   animate={{ rotate: 360 }}
+//                   transition={{ duration: 4, repeat: Infinity, ease: "linear" }}
+//                   className="absolute inset-0 rounded-xl border border-transparent"
+//                   style={{ borderTopColor: item.color, borderRightColor: item.color }}
 //                 />
 //               </motion.div>
 //             )}
             
 //             <div>
 //               <div 
-//                 className="font-bold tracking-wider"
+//                 className="font-bold tracking-wider font-mono"
 //                 style={{ 
-//                   color: isExpanded && depth === 0 ? item.color : '#ffffff',
-//                   fontSize: depth === 0 ? '14px' : depth === 1 ? '13px' : '12px'
+//                   color: isExpanded && depth === 0 ? item.color : '#e2e8f0',
+//                   fontSize: depth === 0 ? '16px' : depth === 1 ? '14px' : '12px',
+//                   textShadow: isExpanded && depth === 0 ? `0 0 10px ${item.color}50` : 'none'
 //                 }}
 //               >
-//                 {item.name}
+//                 {depth > 0 && '> '}{item.name}
 //               </div>
 //             </div>
 //           </div>
           
 //           {hasChildren && (
 //             <motion.div
-//               animate={{ rotate: isExpanded ? 90 : 0 }}
-//               transition={{ duration: 0.2 }}
+//               animate={{ rotate: isExpanded ? 90 : 0, scale: isExpanded ? 1.2 : 1 }}
+//               transition={{ duration: 0.2, type: "spring" }}
+//               className="relative z-10"
 //             >
 //               <ChevronRight 
-//                 className={`w-4 h-4 ${depth === 0 ? 'text-white' : 'text-gray-400'}`}
+//                 className={`w-5 h-5 ${depth === 0 ? 'text-gray-300' : 'text-gray-400'}`}
+//                 style={{ color: isExpanded ? item.color : undefined }}
 //               />
 //             </motion.div>
 //           )}
 //         </motion.button>
 
-//         {/* Submenu */}
+//         {/* Submenu with enhanced animations */}
 //         <AnimatePresence>
 //           {hasChildren && isExpanded && (
 //             <motion.div
 //               initial={{ height: 0, opacity: 0 }}
 //               animate={{ height: 'auto', opacity: 1 }}
 //               exit={{ height: 0, opacity: 0 }}
-//               transition={{ duration: 0.3 }}
+//               transition={{ duration: 0.3, ease: "easeInOut" }}
 //               className="overflow-hidden"
 //             >
-//               {item.children.map((child) => 
-//                 renderMenuItem(child, depth + 1, itemKey)
-//               )}
+//               <motion.div
+//                 initial={{ y: -20 }}
+//                 animate={{ y: 0 }}
+//                 exit={{ y: -20 }}
+//                 transition={{ duration: 0.3, delay: 0.1 }}
+//               >
+//                 {item.children.map((child) => 
+//                   renderMenuItem(child, depth + 1, itemKey)
+//                 )}
+//               </motion.div>
 //             </motion.div>
 //           )}
 //         </AnimatePresence>
-//       </div>
+//       </motion.div>
 //     );
 //   };
 
@@ -264,89 +292,128 @@
 //     <AnimatePresence>
 //       {isOpen && (
 //         <>
-//           {/* Overlay */}
+//           {/* Overlay with blur effect */}
 //           <motion.div
 //             initial={{ opacity: 0 }}
 //             animate={{ opacity: 1 }}
 //             exit={{ opacity: 0 }}
-//             className="fixed inset-0 bg-black/80 backdrop-blur-sm z-40"
+//             className="fixed inset-0 bg-slate-900/90 backdrop-blur-lg z-40"
 //             onClick={onClose}
 //           />
 
-//           {/* Menu Panel */}
+//           {/* Menu Panel with Techfest-inspired design */}
 //           <motion.div
-//             initial={{ x: '-100%' }}
-//             animate={{ x: '0%' }}
-//             exit={{ x: '-100%' }}
+//             initial={{ x: '-100%', opacity: 0 }}
+//             animate={{ x: '0%', opacity: 1 }}
+//             exit={{ x: '-100%', opacity: 0 }}
 //             transition={{
 //               type: 'spring',
-//               stiffness: 400,
+//               stiffness: 300,
 //               damping: 40
 //             }}
-//             className="fixed left-0 top-0 h-full w-80 bg-black/95 backdrop-blur-lg border-r border-cyan-400/30 z-50 overflow-hidden flex flex-col"
+//             className="fixed left-0 top-0 h-full w-80 bg-slate-800/95 backdrop-blur-xl border-r-2 border-cyan-400/30 z-50 overflow-hidden flex flex-col"
+//             style={{ boxShadow: '0 0 50px rgba(0, 255, 255, 0.3)' }}
 //           >
+//             {/* Cyberpunk corner decorations */}
+//             <div className="absolute top-4 left-4 w-8 h-8 border-t-2 border-l-2 border-cyan-400" />
+//             <div className="absolute top-4 right-4 w-8 h-8 border-t-2 border-r-2 border-cyan-400" />
+
 //             {/* Header */}
 //             <motion.div
 //               initial={{ y: -50, opacity: 0 }}
 //               animate={{ y: 0, opacity: 1 }}
 //               transition={{ delay: 0.2 }}
-//               className="flex-shrink-0 p-4 border-b border-cyan-400/30"
+//               className="flex-shrink-0 p-6 border-b-2 border-cyan-400/30 relative"
 //             >
 //               {/* Top Bar */}
-//               <div className="flex items-center justify-between mb-4">
-//                 <div className="text-xs text-gray-400 font-mono">
-//                   GLOBAL ROBOTICS COMPANY | 24/7 AFTER SALES SUPPORT
+//               <div className="flex items-center justify-between mb-6">
+//                 <div className="text-xs text-cyan-400 font-mono">
+//                   &gt; GLOBAL_ROBOTICS_COMPANY | 24/7_SUPPORT
 //                 </div>
 //                 <motion.button
 //                   whileHover={{ scale: 1.1, rotate: 90 }}
 //                   whileTap={{ scale: 0.9 }}
 //                   onClick={onClose}
-//                   className="p-1 text-white"
+//                   className="p-2 text-white hover:text-cyan-400 rounded-lg border border-cyan-400/30 hover:border-cyan-400 transition-colors"
 //                 >
 //                   <X className="w-5 h-5" />
 //                 </motion.button>
 //               </div>
 
 //               {/* Logo */}
-//               <div className="flex items-center space-x-3 mb-4">
+//               <div className="flex items-center space-x-3 mb-6">
 //                 <motion.div
 //                   animate={{ rotate: 360 }}
 //                   transition={{ duration: 8, repeat: Infinity, ease: 'linear' }}
-//                   className="w-8 h-8 border-2 border-cyan-400 rounded-full flex items-center justify-center"
+//                   className="w-10 h-10 border-2 border-cyan-400 rounded-full flex items-center justify-center relative overflow-hidden"
+//                   style={{
+//                     background: 'linear-gradient(135deg, #00ffff, #0080ff)',
+//                     boxShadow: '0 0 20px rgba(0, 255, 255, 0.5)'
+//                   }}
 //                 >
-//                   <Bot className="w-4 h-4 text-cyan-400" />
+//                   <Bot className="w-5 h-5 text-white relative z-10" />
+                  
+//                   {/* Pulsing effect */}
+//                   <motion.div
+//                     className="absolute inset-0 rounded-full bg-cyan-400"
+//                     animate={{
+//                       scale: [1, 1.3, 1],
+//                       opacity: [0, 0.3, 0],
+//                     }}
+//                     transition={{
+//                       duration: 2,
+//                       repeat: Infinity,
+//                       ease: "easeInOut"
+//                     }}
+//                   />
 //                 </motion.div>
 //                 <div>
-//                   <h2 className="text-2xl font-bold text-red-500 font-sans">ADDVERB</h2>
+//                   <h2 className="text-2xl font-bold text-red-400 font-mono">ADDVERB</h2>
+//                   <div className="text-xs text-cyan-400 font-mono">&gt; Automation_Systems</div>
 //                 </div>
 //               </div>
 
 //               {/* Search Bar */}
 //               <div className="relative">
-//                 <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-gray-400" />
+//                 <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-cyan-400" />
 //                 <input
 //                   type="text"
-//                   placeholder="Search here..."
+//                   placeholder="&gt; Search_products_solutions..."
 //                   value={searchTerm}
 //                   onChange={(e) => setSearchTerm(e.target.value)}
-//                   className="w-full pl-10 pr-4 py-2 bg-white border border-gray-300 rounded-md text-black text-sm focus:outline-none focus:border-red-500"
+//                   className="w-full pl-10 pr-4 py-3 bg-slate-700/50 border-2 border-cyan-400/50 rounded-lg text-white text-sm font-mono focus:outline-none focus:border-cyan-400 focus:shadow-[0_0_20px_rgba(0,255,255,0.3)] transition-all"
 //                 />
 //               </div>
 //             </motion.div>
 
 //             {/* Menu Items */}
-//             <div className="flex-1 overflow-y-auto py-2">
-//               {menuStructure.map((item) => renderMenuItem(item))}
+//             <div className="flex-1 overflow-y-auto py-4 scrollbar-thin scrollbar-thumb-cyan-400/50 scrollbar-track-transparent">
+//               <motion.div
+//                 initial={{ opacity: 0 }}
+//                 animate={{ opacity: 1 }}
+//                 transition={{ delay: 0.4 }}
+//               >
+//                 {menuStructure.map((item, index) => (
+//                   <motion.div
+//                     key={item.name}
+//                     initial={{ opacity: 0, x: -50 }}
+//                     animate={{ opacity: 1, x: 0 }}
+//                     transition={{ delay: 0.5 + index * 0.1 }}
+//                   >
+//                     {renderMenuItem(item)}
+//                   </motion.div>
+//                 ))}
+//               </motion.div>
 //             </div>
 
 //             {/* Bottom Navigation */}
 //             <motion.div
 //               initial={{ opacity: 0, y: 50 }}
 //               animate={{ opacity: 1, y: 0 }}
-//               transition={{ delay: 0.6 }}
-//               className="flex-shrink-0 border-t border-gray-200 bg-white"
+//               transition={{ delay: 0.8 }}
+//               className="flex-shrink-0 border-t-2 border-cyan-400/30 bg-slate-800/80 p-4"
 //             >
-//               <div className="flex justify-around py-3">
+//               <div className="grid grid-cols-2 gap-3">
 //                 {bottomNavItems.map((item, index) => (
 //                   <motion.button
 //                     key={item.name}
@@ -354,16 +421,56 @@
 //                       window.location.href = item.path;
 //                       onClose();
 //                     }}
-//                     whileHover={{ scale: 1.1 }}
-//                     whileTap={{ scale: 0.9 }}
-//                     className="flex flex-col items-center space-y-1 text-red-500"
+//                     whileHover={{ scale: 1.05, y: -2 }}
+//                     whileTap={{ scale: 0.95 }}
+//                     className="flex flex-col items-center space-y-2 p-3 rounded-xl font-mono border-2 transition-all relative overflow-hidden group"
+//                     style={{
+//                       background: `${item.color}15`,
+//                       borderColor: `${item.color}50`,
+//                       boxShadow: `0 0 10px ${item.color}20`
+//                     }}
+//                     initial={{ opacity: 0, scale: 0.8 }}
+//                     animate={{ opacity: 1, scale: 1 }}
+//                     transition={{ delay: 0.9 + index * 0.1, type: "spring" }}
 //                   >
-//                     <item.icon className="w-6 h-6" />
-//                     <span className="text-xs font-medium">{item.name}</span>
+//                     {/* Hover glow effect */}
+//                     <motion.div
+//                       className="absolute inset-0 rounded-xl opacity-0 group-hover:opacity-100"
+//                       style={{ background: `${item.color}30` }}
+//                       transition={{ duration: 0.3 }}
+//                     />
+                    
+//                     <motion.div
+//                       whileHover={{ rotate: 360 }}
+//                       transition={{ duration: 0.6 }}
+//                       className="relative z-10"
+//                     >
+//                       <item.icon className="w-6 h-6" style={{ color: item.color }} />
+//                     </motion.div>
+//                     <span 
+//                       className="text-xs font-bold relative z-10" 
+//                       style={{ color: item.color }}
+//                     >
+//                       {item.name}
+//                     </span>
 //                   </motion.button>
 //                 ))}
 //               </div>
+              
+//               {/* Status indicator */}
+//               <div className="flex items-center justify-center mt-4 text-xs font-mono text-cyan-400">
+//                 <motion.div
+//                   animate={{ scale: [1, 1.2, 1], opacity: [0.5, 1, 0.5] }}
+//                   transition={{ duration: 2, repeat: Infinity }}
+//                   className="w-2 h-2 bg-green-400 rounded-full mr-2"
+//                 />
+//                 &gt; System_Online | Ready_to_Assist
+//               </div>
 //             </motion.div>
+
+//             {/* Corner decorations bottom */}
+//             <div className="absolute bottom-4 left-4 w-8 h-8 border-b-2 border-l-2 border-cyan-400" />
+//             <div className="absolute bottom-4 right-4 w-8 h-8 border-b-2 border-r-2 border-cyan-400" />
 //           </motion.div>
 //         </>
 //       )}
@@ -376,34 +483,25 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import {
-  Home,
-  Settings,
-  Package,
-  Bot,
-  Phone,
   X,
-  Zap,
-  Globe,
   ChevronRight,
-  ChevronDown,
   Search,
   Factory,
-  Truck,
-  Cpu,
-  BookOpen,
-  Users,
+  Zap,
+  Settings,
+  Globe,
   Building,
-  Mic,
-  FileText,
-  MessageSquare,
-  HelpCircle
+  Activity,
+  ExternalLink,
+  Eye,
+  Bot
 } from 'lucide-react';
 
 const MobileMenu = ({ isOpen, onClose }) => {
   const [expandedItems, setExpandedItems] = useState({});
   const [searchTerm, setSearchTerm] = useState('');
 
-  // Complete menu structure based on your images and App.jsx routes
+  // Complete menu structure
   const menuStructure = [
     {
       name: 'Industry',
@@ -519,19 +617,19 @@ const MobileMenu = ({ isOpen, onClose }) => {
       color: '#8000ff',
       path: '/company',
       children: [
-        { name: 'Careers', path: '/company/careers' },
         { name: 'About Us', path: '/company/aboutus' },
+        { name: 'Careers', path: '/company/careers' },
         { name: 'Partners', path: '/company/partners' },
       ]
     }
   ];
 
-  // Bottom navigation items
+  // Bottom navigation items with reduced importance
   const bottomNavItems = [
-    { name: 'Podcasts', icon: Mic, path: '/podcasts', color: '#00ffff' },
-    { name: 'Enquire', icon: MessageSquare, path: '/enquire', color: '#ff00ff' },
-    { name: 'Blog', icon: FileText, path: '/blog', color: '#00ff80' },
-    { name: 'Support', icon: HelpCircle, path: '/support', color: '#ff8000' },
+    { name: 'Podcasts', icon: Activity, path: '/podcasts', color: '#00ffff' },
+    { name: 'Enquire', icon: ExternalLink, path: '/enquire', color: '#ff00ff' },
+    { name: 'Blog', icon: Eye, path: '/blog', color: '#00ff80' },
+    { name: 'Support', icon: Settings, path: '/support', color: '#ff8000' },
   ];
 
   const toggleExpanded = (itemPath) => {
@@ -557,31 +655,47 @@ const MobileMenu = ({ isOpen, onClose }) => {
     const hasChildren = item.children && item.children.length > 0;
     
     return (
-      <div key={itemKey} className="relative">
+      <motion.div
+        key={itemKey}
+        className="relative"
+        initial={{ opacity: 0, x: -20 }}
+        animate={{ opacity: 1, x: 0 }}
+        transition={{ delay: depth * 0.1 }}
+      >
         <motion.button
           onClick={() => handleItemClick(item)}
-          className={`w-full flex items-center justify-between p-3 mx-2 my-1 rounded-lg font-mono font-semibold transition-all duration-300 group text-left ${
-            depth === 0 ? 'text-sm' : depth === 1 ? 'text-xs ml-4' : 'text-xs ml-8'
+          className={`w-full flex items-center justify-between p-2 mx-2 my-1 rounded-lg font-mono font-semibold transition-all duration-300 group text-left relative overflow-hidden ${
+            depth === 0 ? 'text-sm' : depth === 1 ? 'text-xs ml-2' : 'text-xs ml-4'
           }`}
           style={{
             background: isExpanded && depth === 0 ? `${item.color}15` : 'transparent',
             borderLeft: isExpanded && depth === 0 ? `3px solid ${item.color}` : 
-                       depth > 0 ? '2px solid #475569' : '3px solid transparent',
-            paddingLeft: depth > 0 ? `${12 + (depth * 8)}px` : '12px'
+                       depth > 0 ? '1px solid #475569' : '2px solid transparent',
+            paddingLeft: depth > 0 ? `${8 + (depth * 6)}px` : '8px'
           }}
-          whileHover={{ x: depth === 0 ? 5 : 2 }}
+          whileHover={{ x: depth === 0 ? 4 : 2, scale: 1.01 }}
           whileTap={{ scale: 0.98 }}
         >
-          <div className="flex items-center space-x-3">
+          {/* Glow effect on hover */}
+          {depth === 0 && (
+            <motion.div
+              className="absolute inset-0 rounded-lg opacity-0 group-hover:opacity-100"
+              style={{
+                background: `radial-gradient(circle at center, ${item.color}20, transparent 70%)`,
+              }}
+              transition={{ duration: 0.3 }}
+            />
+          )}
+
+          <div className="flex items-center space-x-2 sm:space-x-3 relative z-10">
             {depth === 0 && item.icon && (
               <motion.div
                 animate={isExpanded ? { rotate: 180, scale: 1.1 } : { rotate: 0, scale: 1 }}
-                transition={{ duration: 0.3 }}
-                className="p-2 rounded-lg border"
+                transition={{ duration: 0.3, type: "spring" }}
+                className="p-2 rounded-lg border relative overflow-hidden"
                 style={{
                   background: `${item.color}20`,
                   borderColor: `${item.color}50`,
-                  boxShadow: isExpanded ? `0 0 15px ${item.color}40` : 'none',
                 }}
               >
                 <item.icon 
@@ -596,43 +710,52 @@ const MobileMenu = ({ isOpen, onClose }) => {
                 className="font-bold tracking-wider font-mono"
                 style={{ 
                   color: isExpanded && depth === 0 ? item.color : '#e2e8f0',
-                  fontSize: depth === 0 ? '14px' : depth === 1 ? '13px' : '12px'
+                  fontSize: depth === 0 ? '14px' : depth === 1 ? '12px' : '11px',
                 }}
               >
-                {item.name}
+                {depth > 0 && '> '}{item.name}
               </div>
             </div>
           </div>
           
           {hasChildren && (
             <motion.div
-              animate={{ rotate: isExpanded ? 90 : 0 }}
-              transition={{ duration: 0.2 }}
+              animate={{ rotate: isExpanded ? 90 : 0, scale: isExpanded ? 1.1 : 1 }}
+              transition={{ duration: 0.2, type: "spring" }}
+              className="relative z-10"
             >
               <ChevronRight 
                 className={`w-4 h-4 ${depth === 0 ? 'text-gray-300' : 'text-gray-400'}`}
+                style={{ color: isExpanded ? item.color : undefined }}
               />
             </motion.div>
           )}
         </motion.button>
 
-        {/* Submenu */}
+        {/* Submenu with enhanced animations */}
         <AnimatePresence>
           {hasChildren && isExpanded && (
             <motion.div
               initial={{ height: 0, opacity: 0 }}
               animate={{ height: 'auto', opacity: 1 }}
               exit={{ height: 0, opacity: 0 }}
-              transition={{ duration: 0.3 }}
+              transition={{ duration: 0.3, ease: "easeInOut" }}
               className="overflow-hidden"
             >
-              {item.children.map((child) => 
-                renderMenuItem(child, depth + 1, itemKey)
-              )}
+              <motion.div
+                initial={{ y: -20 }}
+                animate={{ y: 0 }}
+                exit={{ y: -20 }}
+                transition={{ duration: 0.3, delay: 0.1 }}
+              >
+                {item.children.map((child) => 
+                  renderMenuItem(child, depth + 1, itemKey)
+                )}
+              </motion.div>
             </motion.div>
           )}
         </AnimatePresence>
-      </div>
+      </motion.div>
     );
   };
 
@@ -640,44 +763,49 @@ const MobileMenu = ({ isOpen, onClose }) => {
     <AnimatePresence>
       {isOpen && (
         <>
-          {/* Overlay */}
+          {/* Overlay with blur effect */}
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="fixed inset-0 bg-slate-900/90 backdrop-blur-sm z-40"
+            className="fixed inset-0 bg-slate-900/90 backdrop-blur-lg z-40"
             onClick={onClose}
           />
 
-          {/* Menu Panel */}
+          {/* Menu Panel with proper sizing */}
           <motion.div
-            initial={{ x: '-100%' }}
-            animate={{ x: '0%' }}
-            exit={{ x: '-100%' }}
+            initial={{ x: '-100%', opacity: 0 }}
+            animate={{ x: '0%', opacity: 1 }}
+            exit={{ x: '-100%', opacity: 0 }}
             transition={{
               type: 'spring',
-              stiffness: 400,
+              stiffness: 300,
               damping: 40
             }}
-            className="fixed left-0 top-0 h-full w-80 bg-slate-800/95 backdrop-blur-lg border-r border-cyan-400/30 z-50 overflow-hidden flex flex-col"
+            className="fixed left-0 top-0 h-full w-72 sm:w-80 bg-slate-800/95 backdrop-blur-xl border-r-2 border-cyan-400/30 z-50 overflow-hidden flex flex-col"
+            style={{ boxShadow: '0 0 50px rgba(0, 255, 255, 0.3)' }}
           >
+            {/* Cyberpunk corner decorations */}
+            <div className="absolute top-4 left-4 w-6 h-6 border-t-2 border-l-2 border-cyan-400" />
+            <div className="absolute top-4 right-4 w-6 h-6 border-t-2 border-r-2 border-cyan-400" />
+
             {/* Header */}
             <motion.div
               initial={{ y: -50, opacity: 0 }}
               animate={{ y: 0, opacity: 1 }}
               transition={{ delay: 0.2 }}
-              className="flex-shrink-0 p-4 border-b border-cyan-400/30"
+              className="flex-shrink-0 p-4 border-b-2 border-cyan-400/30 relative"
             >
               {/* Top Bar */}
               <div className="flex items-center justify-between mb-4">
                 <div className="text-xs text-cyan-400 font-mono">
-                  &gt; GLOBAL_ROBOTICS_COMPANY | 24/7_SUPPORT
+                  &gt; GLOBAL_ROBOTICS_COMPANY
                 </div>
                 <motion.button
                   whileHover={{ scale: 1.1, rotate: 90 }}
                   whileTap={{ scale: 0.9 }}
                   onClick={onClose}
-                  className="p-1 text-white hover:text-cyan-400"
+                  className="p-2 text-white hover:text-cyan-400 rounded-lg border border-cyan-400/30 hover:border-cyan-400 transition-colors"
                 >
                   <X className="w-5 h-5" />
                 </motion.button>
@@ -688,12 +816,17 @@ const MobileMenu = ({ isOpen, onClose }) => {
                 <motion.div
                   animate={{ rotate: 360 }}
                   transition={{ duration: 8, repeat: Infinity, ease: 'linear' }}
-                  className="w-8 h-8 border-2 border-cyan-400 rounded-full flex items-center justify-center"
+                  className="w-8 h-8 border-2 border-cyan-400 rounded-full flex items-center justify-center relative overflow-hidden"
+                  style={{
+                    background: 'linear-gradient(135deg, #00ffff, #0080ff)',
+                    boxShadow: '0 0 15px rgba(0, 255, 255, 0.5)'
+                  }}
                 >
-                  <Bot className="w-4 h-4 text-cyan-400" />
+                  <Bot className="w-4 h-4 text-white relative z-10" />
                 </motion.div>
                 <div>
-                  <h2 className="text-2xl font-bold text-red-400 font-mono">ADDVERB</h2>
+                  <h2 className="text-xl font-bold text-red-400 font-mono">ADDVERB</h2>
+                  <div className="text-xs text-cyan-400 font-mono">&gt; Automation_Systems</div>
                 </div>
               </div>
 
@@ -702,27 +835,42 @@ const MobileMenu = ({ isOpen, onClose }) => {
                 <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-cyan-400" />
                 <input
                   type="text"
-                  placeholder="&gt; Search_here..."
+                  placeholder="&gt; Search..."
                   value={searchTerm}
                   onChange={(e) => setSearchTerm(e.target.value)}
-                  className="w-full pl-10 pr-4 py-2 bg-slate-700/50 border border-cyan-400/50 rounded-md text-white text-sm font-mono focus:outline-none focus:border-cyan-400 focus:shadow-[0_0_15px_rgba(0,255,255,0.3)]"
+                  className="w-full pl-10 pr-4 py-2 bg-slate-700/50 border border-cyan-400/50 rounded-lg text-white text-sm font-mono focus:outline-none focus:border-cyan-400 transition-all"
                 />
               </div>
             </motion.div>
 
-            {/* Menu Items */}
-            <div className="flex-1 overflow-y-auto py-2">
-              {menuStructure.map((item) => renderMenuItem(item))}
+            {/* Menu Items with proper spacing */}
+            <div className="flex-1 overflow-y-auto py-2" style={{ scrollbarWidth: 'thin' }}>
+              <motion.div
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ delay: 0.4 }}
+              >
+                {menuStructure.map((item, index) => (
+                  <motion.div
+                    key={item.name}
+                    initial={{ opacity: 0, x: -50 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ delay: 0.5 + index * 0.1 }}
+                  >
+                    {renderMenuItem(item)}
+                  </motion.div>
+                ))}
+              </motion.div>
             </div>
 
-            {/* Bottom Navigation */}
+            {/* Bottom Navigation with compact design */}
             <motion.div
               initial={{ opacity: 0, y: 50 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.6 }}
-              className="flex-shrink-0 border-t border-cyan-400/30 bg-slate-800"
+              transition={{ delay: 0.8 }}
+              className="flex-shrink-0 border-t border-cyan-400/30 bg-slate-800/80 p-3"
             >
-              <div className="grid grid-cols-4 gap-2 py-3 px-4">
+              <div className="grid grid-cols-2 gap-2">
                 {bottomNavItems.map((item, index) => (
                   <motion.button
                     key={item.name}
@@ -730,22 +878,42 @@ const MobileMenu = ({ isOpen, onClose }) => {
                       window.location.href = item.path;
                       onClose();
                     }}
-                    whileHover={{ scale: 1.1, y: -2 }}
-                    whileTap={{ scale: 0.9 }}
-                    className="flex flex-col items-center space-y-1 p-2 rounded-lg font-mono"
+                    whileHover={{ scale: 1.02, y: -1 }}
+                    whileTap={{ scale: 0.98 }}
+                    className="flex flex-col items-center space-y-1 p-2 rounded-lg font-mono border transition-all relative overflow-hidden group text-xs"
                     style={{
-                      background: `${item.color}20`,
-                      border: `1px solid ${item.color}50`
+                      background: `${item.color}10`,
+                      borderColor: `${item.color}40`,
                     }}
+                    initial={{ opacity: 0, scale: 0.9 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    transition={{ delay: 0.9 + index * 0.05, type: "spring" }}
                   >
-                    <item.icon className="w-5 h-5" style={{ color: item.color }} />
-                    <span className="text-xs font-medium" style={{ color: item.color }}>
+                    <item.icon className="w-4 h-4" style={{ color: item.color }} />
+                    <span 
+                      className="font-bold" 
+                      style={{ color: item.color }}
+                    >
                       {item.name}
                     </span>
                   </motion.button>
                 ))}
               </div>
+              
+              {/* Status indicator */}
+              <div className="flex items-center justify-center mt-2 text-xs font-mono text-cyan-400">
+                <motion.div
+                  animate={{ scale: [1, 1.2, 1], opacity: [0.5, 1, 0.5] }}
+                  transition={{ duration: 2, repeat: Infinity }}
+                  className="w-1.5 h-1.5 bg-green-400 rounded-full mr-2"
+                />
+                &gt; System_Online
+              </div>
             </motion.div>
+
+            {/* Corner decorations bottom */}
+            <div className="absolute bottom-4 left-4 w-6 h-6 border-b-2 border-l-2 border-cyan-400" />
+            <div className="absolute bottom-4 right-4 w-6 h-6 border-b-2 border-r-2 border-cyan-400" />
           </motion.div>
         </>
       )}

@@ -2,6 +2,7 @@
 import React, { Suspense, lazy } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Layout from "./components/Layout/Layout";
+import { Podcast } from "lucide-react";
 
 // Create a wrapper function to handle the generic PageName export
 const createPageComponent = (importFunc) => {
@@ -92,6 +93,7 @@ const Whitepapers = createPageComponent(() => import("./pages/NewsRoom/Whitepape
 const Blog = createPageComponent(() => import("./pages/BottomBar/Blog"));
 const Enquire = createPageComponent(() => import("./pages/BottomBar/Enquire"));
 const Support = createPageComponent(() => import("./pages/BottomBar/Support"));
+const PodcastPage = createPageComponent(() => import("./pages/BottomBar/PodcastPage"));
 
 // Loading component for Suspense fallback
 const LoadingFallback = () => (
@@ -183,6 +185,7 @@ function App() {
             <Route path="/blog" element={<Blog />} />
             <Route path="/enquire" element={<Enquire />} />
             <Route path="/support" element={<Support />} />
+            <Route path="/podcastpage" element={<PodcastPage />} />
 
             {/* 404 */}
             <Route

@@ -1,3 +1,4 @@
+
 import React, { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { 
@@ -29,6 +30,21 @@ import {
   RotateCcw,
   Phone
 } from 'lucide-react';
+
+// Import images
+import sortationImg from '/src/assets/images/functionalities/sortation.jpg';
+import materialMovementImg from '/src/assets/images/functionalities/material-movement.jpg';
+import storageImg from '/src/assets/images/functionalities/storage.jpg';
+import pickingImg from '/src/assets/images/functionalities/picking.jpg';
+import reverseLogisticsImg from '/src/assets/images/functionalities/reverse-logistics.jpg';
+import aiTeaserImg from '/src/assets/images/content/ai-teaser.jpg';
+import woosterCaseStudyImg from '/src/assets/images/content/wooster-case-study.jpg';
+import palletShuttleImg from '/src/assets/images/content/pallet-shuttle.jpg';
+import sasImperialImg from '/src/assets/images/content/sas-imperial.jpg';
+import fleetManagementImg from '/src/assets/images/content/fleet-management.jpg';
+import teamPhotoImg from '/src/assets/images/about/team-photo.jpg';
+import ecoWarehouseImg from '/src/assets/images/sustainability/eco-warehouse.jpg';
+import automationWarehouseImg from '/src/assets/images/contact/automation-warehouse.jpg';
 
 // Enhanced Particle System with reduced particles for better performance
 const ParticleSystem = () => {
@@ -274,35 +290,35 @@ const FunctionalitiesCarousel = () => {
     {
       title: 'Sortation',
       description: 'Scale your business and meet the increased demand with our flexible sortation solutions that increase your efficiency and accuracy.',
-      image: 'src/assets/images/functionalities/sortation.jpg',
+      image: sortationImg,
       color: '#00ffff',
       icon: Package
     },
     {
       title: 'Material Movement',
       description: 'Discover our wide range of robots and automation systems that can help you to improve productivity and lower overall handling costs.',
-      image: 'src/assets/images/functionalities/material-movement.jpg',
+      image: materialMovementImg,
       color: '#ff00ff',
       icon: Bot
     },
     {
       title: 'Storage',
       description: 'Optimise your storage space and ensure real time inventory visibility for your pallet and crate handling operations with our automated storage and retrieval system.',
-      image: 'src/assets/images/functionalities/storage.jpg',
+      image: storageImg,
       color: '#00ff80',
       icon: Layers
     },
     {
       title: 'Picking',
       description: 'Improve the productivity and accuracy of your picking processes for faster order fulfilment with our Pick-to-Light and Pick-by-Voice.',
-      image: 'src/assets/images/functionalities/picking.jpg',
+      image: pickingImg,
       color: '#ff8000',
       icon: Cpu
     },
     {
       title: 'Reverse Logistics',
       description: 'Streamline your return processes with automated reverse logistics solutions that reduce costs and improve customer satisfaction.',
-      image: 'src/assets/images/functionalities/reverse-logistics.jpg',
+      image: reverseLogisticsImg,
       color: '#ff0080',
       icon: RotateCcw
     }
@@ -536,35 +552,35 @@ const LatestContent = () => {
     {
       type: 'VIDEO',
       title: "Addverb's Physical AI Teaser",
-      thumbnail: 'src/assets/images/content/ai-teaser.jpg',
+      thumbnail: aiTeaserImg,
       isVideo: true,
       color: '#00ffff'
     },
     {
       type: 'CASE STUDY',
       title: "Wooster's Automated Material Handling",
-      thumbnail: 'src/assets/images/content/wooster-case-study.jpg',
+      thumbnail: woosterCaseStudyImg,
       category: 'CASE STUDY',
       color: '#ff00ff'
     },
     {
       type: 'PRODUCT',
       title: "Addverb's 4 Way Pallet Shuttle",
-      thumbnail: 'src/assets/images/content/pallet-shuttle.jpg',
+      thumbnail: palletShuttleImg,
       category: 'PRODUCT',
       color: '#00ff80'
     },
     {
       type: 'CASE STUDY',
       title: "SAS Imperial's Automated Distribution Centre",
-      thumbnail: 'src/assets/images/content/sas-imperial.jpg',
+      thumbnail: sasImperialImg,
       category: 'CASE STUDY',
       color: '#ff8000'
     },
     {
       type: 'WHITEPAPER',
       title: "3 Real World Fleet Management Success Stories",
-      thumbnail: 'src/assets/images/content/fleet-management.jpg',
+      thumbnail: fleetManagementImg,
       category: 'WHITEPAPER',
       color: '#ff0080'
     }
@@ -1019,7 +1035,7 @@ export default function Home() {
                 <div 
                   className="w-full h-64 sm:h-80 bg-cover bg-center"
                   style={{
-                    backgroundImage: `url(src/assets/images/about/team-photo.jpg)`,
+                    backgroundImage: `url(${teamPhotoImg})`,
                   }}
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
@@ -1046,7 +1062,7 @@ export default function Home() {
           <div 
             className="absolute inset-0 bg-cover bg-center"
             style={{
-              backgroundImage: 'linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.9)), url(src/assets/images/sustainability/eco-warehouse.jpg)'
+              backgroundImage: `linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.9)), url(${ecoWarehouseImg})`
             }}
           />
           <div className="relative z-10 max-w-4xl mx-auto text-center text-white">
@@ -1175,7 +1191,7 @@ export default function Home() {
                 <div 
                   className="w-full h-64 sm:h-80 bg-cover bg-center"
                   style={{
-                    backgroundImage: `url(src/assets/images/contact/automation-warehouse.jpg)`,
+                    backgroundImage: `url(${automationWarehouseImg})`,
                   }}
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
